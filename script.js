@@ -252,7 +252,10 @@ fetch("https://api.api-ninjas.com/v1/quotes?category=happiness", {
   });
 //Above is code for quote widget
 
-let savedTasks = JSON.parse(localStorage.getItem("tasks"));
+let savedTasks = localStorage.getItem("tasks");
+if (savedTasks) {
+  savedTasks = JSON.parse(savedTasks);
+}
 if (savedTasks.length > 0) {
   taskList.innerHTML = "";
   savedTasks.forEach((task) => {
