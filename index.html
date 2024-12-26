@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="tab-title">My Homeboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <form
+          class="box"
+          action="https://www.google.com/search"
+          method="get"
+          style="flex: 2"
+        >
+          <input
+            class="search"
+            placeholder="Search anything"
+            autocomplete="off"
+            name="q"
+          />
+          <button type="submit" style="display: none"></button>
+        </form>
+        <div class="box">
+          <a href="https://mail.google.com" class="icon">
+            <img src="media/email.svg" />Gmail
+          </a>
+          <a href="https://youtube.com" class="icon">
+            <img src="media/youtube.svg" />YouTube
+          </a>
+          <a href="https://drive.google.com" class="icon">
+            <img src="media/drive.svg" />Drive
+          </a>
+        </div>
+      </div>
+      <div class="container search-container" id="shortcuts">
+        <div class="box">
+          <div class="shortcut" id="add-shortcut">
+            <img
+              src="media/add.svg"
+              class="shortcut-img"
+              style="height: 40px"
+            />
+            <p class="shortcut-name">Add Shortcut</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="box" style="padding-block: 20px">
+          <img src="media/noon.svg" class="widget-icon" id="greeting-icon" />
+          <div class="text">
+            <p class="greeting" id="greeting"></p>
+            <p class="time" id="time"></p>
+          </div>
+        </div>
+        <div class="box tasks">
+          <div id="task-list">
+            <br /><br /><br /><br />
+            No tasks right now ✅!
+          </div>
+          <input type="text" id="task-input" placeholder="Add tasks" />
+        </div>
+        <div class="box weather">
+          <h2 id="weather-location">Weather Disabled</h2>
+          <img src="" class="weather-icon" id="weather-icon" />
+          <div class="weather-temp">
+            <div id="temp"></div>
+            <div id="humidity"></div>
+          </div>
+          <div id="weather-desc"></div>
+        </div>
+        <div class="box" style="flex-direction: column; padding-block: 20px">
+          <a href="" id="news-link" style="display: block"></a>
+        </div>
+      </div>
+      <div class="container quote-container">
+        <div class="box" id="quote">Loading quote...</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
