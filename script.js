@@ -255,28 +255,28 @@ fetch("https://api.api-ninjas.com/v1/quotes?category=happiness", {
 let savedTasks = localStorage.getItem("tasks");
 if (savedTasks) {
   savedTasks = JSON.parse(savedTasks);
-}
-if (savedTasks.length > 0) {
-  taskList.innerHTML = "";
-  savedTasks.forEach((task) => {
-    let newTask = document.createElement("div");
-    newTask.classList.add("task-item");
-    newTask.innerHTML = `
+  if (savedTasks.length > 0) {
+    taskList.innerHTML = "";
+    savedTasks.forEach((task) => {
+      let newTask = document.createElement("div");
+      newTask.classList.add("task-item");
+      newTask.innerHTML = `
         <input type="checkbox" class="task-checkbox">
         ${task}
       `;
-    newTask.children[0].addEventListener("click", () => {
-      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      tasks.splice(tasks.indexOf(task), 1);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      newTask.remove();
-      if (taskList.children.length === 0) {
-        taskList.innerHTML = "<br><br><br><br>No tasks right now ✅!";
-        taskList.style.textAlign = "center";
-      }
+      newTask.children[0].addEventListener("click", () => {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.splice(tasks.indexOf(task), 1);
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        newTask.remove();
+        if (taskList.children.length === 0) {
+          taskList.innerHTML = "<br><br><br><br>No tasks right now ✅!";
+          taskList.style.textAlign = "center";
+        }
+      });
+      taskList.appendChild(newTask);
     });
-    taskList.appendChild(newTask);
-  });
+  }
 }
 
 taskInput.addEventListener("keydown", (e) => {
