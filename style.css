@@ -296,6 +296,7 @@ body {
   margin-bottom: 10px;
 }
 
-.option input, .option label {
+.option input,
+.option label {
   cursor: pointer;
 }

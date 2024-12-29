@@ -364,7 +364,7 @@ let settingArr = localStorage.getItem("setting")
   : [];
 const settingOptions = document.querySelectorAll(".option");
 settingArr.forEach((setting, index) => {
-  if (!setting) {
+  if (setting !== null && !setting) {
     settingOptions[index].children[0].checked = false;
     switch (index) {
       case 0:
