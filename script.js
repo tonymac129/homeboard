@@ -14,6 +14,13 @@ const weatherLocation = document.getElementById("weather-location");
 const taskInput = document.getElementById("task-input");
 const taskList = document.getElementById("task-list");
 const tabTitle = document.getElementById("tab-title");
+const settings = document.getElementById("settings");
+const modal = document.getElementById("modal");
+const greetingBox = document.getElementById("greeting-box");
+const tasksBox = document.getElementById("tasks-box");
+const weatherBox = document.getElementById("weather-box");
+const newsBox = document.getElementById("news-box");
+const quoteBox = document.getElementById("quote-box");
 let username = "User";
 
 if (localStorage.getItem("username")) {
@@ -310,3 +317,72 @@ taskInput.addEventListener("keydown", (e) => {
   }
 });
 //Above is code for tasks widget
+
+settings.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+  if (e.target.parentElement.classList.contains("option")) {
+    let checkbox = e.target.parentElement.children[0];
+    let name = checkbox.id.replace("-widget", "");
+    let settingStorage = localStorage.getItem("setting")
+      ? JSON.parse(localStorage.getItem("setting"))
+      : [];
+    switch (name) {
+      case "greeting":
+        greetingBox.style.display = checkbox.checked ? "flex" : "none";
+        settingStorage[0] = checkbox.checked;
+        break;
+      case "tasks":
+        tasksBox.style.display = checkbox.checked ? "flex" : "none";
+        settingStorage[1] = checkbox.checked;
+        break;
+      case "weather":
+        weatherBox.style.display = checkbox.checked ? "flex" : "none";
+        settingStorage[2] = checkbox.checked;
+        break;
+      case "news":
+        newsBox.style.display = checkbox.checked ? "flex" : "none";
+        settingStorage[3] = checkbox.checked;
+        break;
+      case "quote":
+        quoteBox.style.display = checkbox.checked ? "flex" : "none";
+        settingStorage[4] = checkbox.checked;
+        break;
+    }
+    console.log(settingStorage);
+    localStorage.setItem("setting", JSON.stringify(settingStorage));
+  }
+});
+
+let settingArr = localStorage.getItem("setting")
+  ? JSON.parse(localStorage.getItem("setting"))
+  : [];
+const settingOptions = document.querySelectorAll(".option");
+settingArr.forEach((setting, index) => {
+  if (!setting) {
+    settingOptions[index].children[0].checked = false;
+    switch (index) {
+      case 0:
+        greetingBox.style.display = "none";
+        break;
+      case 1:
+        tasksBox.style.display = "none";
+        break;
+      case 2:
+        weatherBox.style.display = "none";
+        break;
+      case 3:
+        newsBox.style.display = "none";
+        break;
+      case 4:
+        quoteBox.style.display = "none";
+        break;
+    }
+  }
+});
+//Above is code for settings

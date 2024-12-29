@@ -5,11 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="tab-title">My Homeboard</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon" />
   </head>
   <body>
+    <div class="modal-background" id="modal">
+      <div class="modal">
+        <h2 class="modal-title">Settings</h2>
+        <div class="option">
+          <input type="checkbox" id="greeting-widget" checked /><label
+            for="greeting-widget"
+            >Greeting</label
+          >
+        </div>
+        <div class="option">
+          <input type="checkbox" id="tasks-widget" checked /><label
+            for="tasks-widget"
+            >Tasks</label
+          >
+        </div>
+        <div class="option">
+          <input type="checkbox" id="weather-widget" checked /><label
+            for="weather-widget"
+            >Weather</label
+          >
+        </div>
+        <div class="option">
+          <input type="checkbox" id="news-widget" checked /><label
+            for="news-widget"
+            >News</label
+          >
+        </div>
+        <div class="option">
+          <input type="checkbox" id="quote-widget" checked /><label
+            for="quote-widget"
+            >Quotes</label
+          >
+        </div>
+      </div>
+    </div>
     <div class="wrap">
-      <div class="container">
+      <div class="container" style="width: calc(100% - 70px)">
         <form
           class="box"
           action="https://www.google.com/search"
@@ -36,6 +71,9 @@
           </a>
         </div>
       </div>
+      <div class="settings" id="settings">
+        <img src="media/settings.svg" />
+      </div>
       <div class="container search-container" id="shortcuts">
         <div class="box">
           <div class="shortcut" id="add-shortcut">
@@ -49,21 +87,26 @@
         </div>
       </div>
       <div class="container">
-        <div class="box" style="padding-block: 20px">
+        <div class="box" style="padding-block: 20px" id="greeting-box">
           <img src="media/noon.svg" class="widget-icon" id="greeting-icon" />
           <div class="text">
             <p class="greeting" id="greeting"></p>
             <p class="time" id="time"></p>
           </div>
         </div>
-        <div class="box tasks">
+        <div class="box tasks" id="tasks-box">
           <div id="task-list">
             <br /><br /><br /><br />
             No tasks right now ✅!
           </div>
-          <input type="text" id="task-input" placeholder="Add tasks" />
+          <input
+            type="text"
+            id="task-input"
+            placeholder="Add tasks"
+            autocomplete="off"
+          />
         </div>
-        <div class="box weather">
+        <div class="box weather" id="weather-box">
           <h2 id="weather-location">Weather Disabled</h2>
           <img src="" class="weather-icon" id="weather-icon" />
           <div class="weather-temp">
@@ -72,11 +115,11 @@
           </div>
           <div id="weather-desc"></div>
         </div>
-        <div class="box" style="flex-direction: column; padding-block: 20px">
+        <div class="box" style="flex-direction: column; padding-block: 20px" id="news-box">
           <a href="" id="news-link" style="display: block"></a>
         </div>
       </div>
-      <div class="container quote-container">
+      <div class="container quote-container" id="quote-box">
         <div class="box" id="quote">Loading quote...</div>
       </div>
     </div>
